@@ -60,7 +60,7 @@ public class WHHomePage {
 	
 	public boolean verifySubmittedReview(String username) throws InterruptedException {		
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", getWebElement(CURRENT_REVIEW));
-		Thread.sleep(2000);
+		sleep(2000);
 		getWebDriverWait(20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CURRENT_REVIEW)));
 		return getWebElement(CURRENT_REVIEW).isDisplayed() && getWebElement("//span[text()='@"+username+"']").isDisplayed();
 	}

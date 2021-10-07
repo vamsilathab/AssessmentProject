@@ -29,14 +29,12 @@ public class DriverBase {
 					WebDriverManager.chromedriver().setup();
 					 Map<String, Object> prefs = new HashMap<String, Object>();
 					 prefs.put("profile.default_content_setting_values.notifications", 2);
+					 prefs.put("profile.default_content_settings.popups", 0); 
+					 prefs.put("safebrowsing.enabled", "false"); 
+					 prefs.put("profile.default_content_setting_values.automatic_downloads", 1);
 					ChromeOptions options = new ChromeOptions();
-					//Add chrome switch to disable notification - "**--disable-notifications**"
-				/*
-				 * options.addArguments("--disable-notifications");
-				 * options.addArguments("--no-default-browser-check");
-				 * options.addArguments("'--disable-gpu"); options.addArguments("incognito");
-				 */
-				    // set ExperimentalOption - prefs 
+					options.addArguments("incognito");
+					options.addArguments("--disable-notifications");
 				    options.setExperimentalOption("prefs", prefs);
 					driver = new ChromeDriver(options);
 				}			
