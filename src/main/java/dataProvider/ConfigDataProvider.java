@@ -25,6 +25,11 @@ public class ConfigDataProvider {
 		return url;
 	}
 	
+	public  String getFBApplicationUrl() {
+		String url=prop.getProperty("FBUrl");
+		return url;
+	}
+	
 	public String getEncodedValue() {
 		String encodeVal=prop.getProperty("password_encode");
 		return encodeVal;
@@ -39,6 +44,15 @@ public class ConfigDataProvider {
 		return prop.getProperty("userName");	
 	}
 	
+	public String getFBEmail() {
+		String encodeVal=prop.getProperty("fb_email");
+		return encodeVal;
+	}
+	
+	public String getFBPassword() {
+		String encodeVal=prop.getProperty("fb_password");
+		return encodeVal;
+	}
 	
 	
 	public String getFirstName() {
@@ -50,9 +64,9 @@ public class ConfigDataProvider {
 		return prop.getProperty("reviewText");
 	}
 	
-	public String getDecodedValue() {
+	public String getDecodedValue(String encodedString) {
 		Base64.Decoder decoder = Base64.getDecoder();  
-       return new String(decoder.decode(getEncodedValue()));
+       return new String(decoder.decode(encodedString));
 	}
 	
 	

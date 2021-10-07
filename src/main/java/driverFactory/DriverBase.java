@@ -1,10 +1,13 @@
 package driverFactory;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -24,7 +27,18 @@ public class DriverBase {
 		 if(driver== null) {
 			 if(browser.equalsIgnoreCase("Chrome")) {		
 					WebDriverManager.chromedriver().setup();
-					driver = new ChromeDriver();
+					 Map<String, Object> prefs = new HashMap<String, Object>();
+					 prefs.put("profile.default_content_setting_values.notifications", 2);
+					ChromeOptions options = new ChromeOptions();
+					//Add chrome switch to disable notification - "**--disable-notifications**"
+				/*
+				 * options.addArguments("--disable-notifications");
+				 * options.addArguments("--no-default-browser-check");
+				 * options.addArguments("'--disable-gpu"); options.addArguments("incognito");
+				 */
+				    // set ExperimentalOption - prefs 
+				    options.setExperimentalOption("prefs", prefs);
+					driver = new ChromeDriver(options);
 				}			
 				else if(browser.equalsIgnoreCase("Firefox")) {			
 					WebDriverManager.firefoxdriver().setup();

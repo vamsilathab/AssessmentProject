@@ -33,6 +33,16 @@ public interface LocatorUtils {
 	public static final String CURRENT_REVIEW = "//div[@itemprop='itemReviewed']/following-sibling::div//span[text()=' Your Review']";
 	public static final String REVIEW_USER_ID = "//span[text()='@"+username+"']";
 	
+	//FB Login
+	public static final String FB_EMAIL = "email";
+	public static final String FB_PASSWORD = "pass";
+	public static final String FB_LOGINBUTTON = "button[name='login']";
+	public static final String FB_HOMEICON = "a[aria-label='Home']";
+	public static final String CREATE_POST = "//span[contains(text(), \"What's on your mind\")]";
+	public static final String POST_SELECTION = "//div[contains(@aria-label,\"What's on your mind\")]";
+	public static final String POST_BUTTON = "//span[text()='Post']";
+	public static final String CLOSE_POST = "div[aria-label='Close']";
+	
 }
 	
 	

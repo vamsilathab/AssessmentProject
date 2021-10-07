@@ -48,7 +48,7 @@ public class WHReviewTest {
 	public void verifyLogin() throws Exception {
 		WHHomePage wp=new WHHomePage();
 		wp.userLogin();
-		Boolean loginStatus = wp.login(BuildFactory.ConfigObject().getEmail(), BuildFactory.ConfigObject().getDecodedValue(), BuildFactory.ConfigObject().getFirstName());
+		Boolean loginStatus = wp.login(BuildFactory.ConfigObject().getEmail(), BuildFactory.ConfigObject().getDecodedValue(BuildFactory.ConfigObject().getEncodedValue()), BuildFactory.ConfigObject().getFirstName());
 		Assert.assertTrue(loginStatus, "Alert! Login Unsuccessful");	
 		logger.log(LogStatus.INFO, "Login validation!");
 		logger.log(LogStatus.INFO, logger.addScreenCapture(Helper.captuteScreenshot(driver, "validation")));
@@ -103,7 +103,8 @@ public class WHReviewTest {
 			}
 	
 
-	  @AfterTest public void closeTest() throws IOException {
-	  AppUtils.quitDriver(); }
+	 @AfterTest public void closeTest() throws IOException {
+		  AppUtils.quitDriver(); 
+		  }
 	 
 }
